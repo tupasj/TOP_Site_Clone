@@ -1,4 +1,4 @@
-import './styles.scss';
+import "./App.scss";
 // import axios from "axios";
 
 const App = () => {
@@ -11,7 +11,17 @@ const App = () => {
 
   return (
     <>
-    <p>lorem ipsum</p>
+      <div className="page-wrapper home">
+        <header>Header</header>
+        <aside>Sidebar</aside>
+        <main>
+          <article className="featured-livestream">Featured livestream</article>
+          <article className="category">
+            <h2 className="category__title">Category title</h2>
+            <div className="category__content">category content</div>
+          </article>
+        </main>
+      </div>
     </>
   );
 };
