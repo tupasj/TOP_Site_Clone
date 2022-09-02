@@ -1,5 +1,6 @@
-import "./App.scss";
+import "./styles.scss";
 // import axios from "axios";
+import { Home } from "./pages/Home";
 
 const App = () => {
   // const twitchAPI = axios.create({
@@ -11,17 +12,7 @@ const App = () => {
 
   return (
     <>
-      <div className="page-wrapper home">
-        <header>Header</header>
-        <aside>Sidebar</aside>
-        <main>
-          <article className="featured-livestream">Featured livestream</article>
-          <article className="category">
-            <h2 className="category__title">Category title</h2>
-            <div className="category__content">category content</div>
-          </article>
-        </main>
-      </div>
+    <Home />
     </>
   );
 };
