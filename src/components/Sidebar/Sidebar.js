@@ -1,7 +1,10 @@
 const Sidebar = () => {
     return (
         <aside>
-            Sidebar
+            <div className="sidebar-title">Recommended Channels</div>
+            <div className="recommended-channels">
+                <div className="recommended-channel">Recommended channel</div>
+            </div>
         </aside>
     );
 };

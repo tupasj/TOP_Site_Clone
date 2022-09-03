@@ -1,8 +1,8 @@
 const HeaderRight = () => {
     return (
-        <>
-        <span>HeaderRight</span>
-        </>
+        <div className="header-right">
+            HeaderRight
+        </div>
     )
 }
 
