@@ -7,10 +7,12 @@ afterEach(() => {
     jest.restoreAllMocks();
 });
 
-test("fetches users", () => {
-  expect(twitchAPI.fetchUsers()).toEqual(mockResponses.users);
+test("fetches users", async () => {
+  expect.assertions(1);
+  await expect(twitchAPI.fetchUsers()).resolves.toEqual(mockResponses.users);
 });
 
-test("fetches streams", () => {
-  expect(twitchAPI.fetchStreams()).toEqual(mockResponses.streams);
+test("fetches streams", async () => {
+  expect.assertions(1);
+  await expect(twitchAPI.fetchStreams()).resolves.toEqual(mockResponses.streams);
 });

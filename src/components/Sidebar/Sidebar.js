@@ -3,11 +3,16 @@ import { useEffect } from "react";
 
 const Sidebar = () => {
   useEffect(() => {
-    const consoleLogData = async () => {
-      const users = await twitchAPI.fetchUsers();
+    const consoleLogUsers = async () => {
+      const users = await twitchAPI.fetchUsers('asmongold');
       console.log(users);
     };
-    consoleLogData();
+    const consoleLogStreams = async () => {
+      const streams = await twitchAPI.fetchStreams();
+      console.log(streams);
+    }
+    // consoleLogUsers();
+    consoleLogStreams();
   }, []);
 
   return (
