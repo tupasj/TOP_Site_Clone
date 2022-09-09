@@ -17,9 +17,38 @@ const fetchStreams = async () => {
   return streams;
 };
 
+const fetchTopUsersInfo = async () => {
+  const streams = await fetchStreams();
+  const streamsArray = streams.data.data;
+  // console.log('streamsArray: ');
+  // console.log(streamsArray);
+  const userInfoArray = [];
+  for (let i = 0; i < streamsArray.length; i++) {
+    const userInfo = await fetchUsers(streamsArray[i].user_login);
+    userInfoArray.push(userInfo.data.data[0]);
+  };
+  // console.log('userInfoArray: ');
+  // console.log(userInfoArray);
+  const topUsersArray = [];
+  for (let i = 0; i < streamsArray.length; i++) {
+    const topUserInfo = {
+      img: userInfoArray[i].profile_image_url,
+      name: userInfoArray[i].display_name,
+      currentlyPlaying: streamsArray[i].game_name,
+      viewerCount: streamsArray[i].viewer_count
+    };
+    topUsersArray.push(topUserInfo);
+  };
+  console.log('topUsersArray: ');
+  console.log(topUsersArray);
+
+  return topUsersArray;
+};
+
 const twitchAPI = {
   fetchUsers: fetchUsers,
-  fetchStreams: fetchStreams
+  fetchStreams: fetchStreams,
+  fetchTopUsersInfo: fetchTopUsersInfo
 };
 
 export default twitchAPI;
