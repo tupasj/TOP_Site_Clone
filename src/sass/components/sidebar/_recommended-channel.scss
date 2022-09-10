@@ -1,0 +1,38 @@
+.recommended-channel {
+  display: grid;
+  grid-template-columns: 30px 1fr 50px;
+  font-size: 0.75rem;
+  padding-top: 3px;
+  &--plain {
+    margin: 0;
+  }
+  &--center {
+    text-align: center;
+  }
+  &__img {
+    border-radius: 50%;
+    height: 35px;
+  }
+  &__section {
+    &--vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-top: 3px;
+      padding-left: 12px;
+      padding-right: 2px;
+    }
+  }
+  &__icon {
+    &--circle {
+      color: red;
+      font-size: 10px;
+    }
+  }
+  &__name {
+    font-weight: bold;
+  }
+  &__viewer-count {
+    padding-left: 4px;
+  }
+}

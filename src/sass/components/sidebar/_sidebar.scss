@@ -1,3 +1,9 @@
 aside {
-    background-color: var(--regular-gray);
+  background-color: var(--regular-gray);
+}
+
+.sidebar-title {
+  margin-bottom: 12px;
+  font-weight: bold;
+  font-size: 0.75rem;
 }

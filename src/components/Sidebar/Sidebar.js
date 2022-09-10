@@ -4,7 +4,7 @@ const Sidebar = () => {
   return (
     <aside>
       <div data-testid="sidebar-title" className="sidebar-title">
-        Recommended Channels
+        RECOMMENDED CHANNELS
       </div>
       <RecommendedChannels />
     </aside>
