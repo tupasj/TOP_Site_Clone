@@ -4,7 +4,7 @@ import { Sidebar } from "../components/Sidebar/Sidebar";
 test("renders heading text", () => {
   render(<Sidebar />);
   const sidebarTitle = screen.getByTestId("sidebar-title");
-  const expectedText = "Recommended Channels";
+  const expectedText = "RECOMMENDED CHANNELS";
   if (!(sidebarTitle.textContent === expectedText)) {
     throw new Error(`Component textContent does not match expected text\n
          Expected: ${expectedText}

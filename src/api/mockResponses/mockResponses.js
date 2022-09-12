@@ -35,6 +35,14 @@ const mockResponses = {
       },
     ],
   },
+  topUsers: [
+    {
+      img: "https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png",
+      name: "Asmongold",
+      currentlyPlaying: "Minecraft",
+      viewerCount: 65528,
+    },
+  ],
 };
 
 export { mockResponses };

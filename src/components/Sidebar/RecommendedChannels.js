@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 const RecommendedChannels = () => {
   const [topUsersInfo, setTopUsersInfo] = useState({});
 
+  // Fetch data from API after initial render and then update state with the response
   useEffect(() => {
     const getTopUsersInfo = async () => {
       const topUsersInfoArray = await twitchAPI.fetchTopUsersInfo();
@@ -15,6 +16,7 @@ const RecommendedChannels = () => {
 
   return (
     <div className="recommended-channels">
+      {/* Renders children whenever topUsersInfo state is a non-empty array */}
       {topUsersInfo[0] &&
         topUsersInfo.map((item) => {
           return (
