@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import twitchAPI from "../../api/twitchAPI";
 import { useState, useEffect } from "react";
+import { formatViewerCount } from "../../utils/formatNums";
 
 const RecommendedChannels = () => {
   const [topUsersInfo, setTopUsersInfo] = useState({});
@@ -36,7 +37,7 @@ const RecommendedChannels = () => {
               </div>
               <div className="recommended-channel__section">
                 <i className="recommended-channel__icon--circle fa-solid fa-circle"></i>
-                <span className="recommended-channel__viewer-count">12K</span>
+                <span className="recommended-channel__viewer-count">{formatViewerCount(item.viewerCount)}</span>
               </div>
             </div>
           );
