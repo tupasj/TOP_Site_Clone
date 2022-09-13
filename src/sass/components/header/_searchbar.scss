@@ -1,10 +1,33 @@
-@use '../../mixins' as *;
+@use "../../mixins" as *;
 
 .searchbar {
-    @include flex-center();
+  @include flex-center();
+  width: 100%;
+  padding-right: 7%;
+  &__container {
+    display: grid;
+    grid-template-columns: auto 32px;
+    gap: 1px;
+    justify-items: center;
+    align-items: center;
+  }
+  &__icon-container {
+    height: 95%;
     width: 100%;
-    padding-right: 7%;
-    &__icon {
-        margin-left: 2px;
+    background-color: var(--light-gray-searchbar);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+  &__input {
+    padding: 11px;
+    border: 0;
+    border-radius: 7px;
+    background-color: var(--regular-gray-searchbar);
+    &:focus {
+      outline: none;
     }
+  }
 }
