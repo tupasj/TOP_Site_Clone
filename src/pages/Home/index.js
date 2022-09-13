@@ -1,3 +1,4 @@
 import { Home } from "./Home";
+import { UserChannel } from "./UserChannel";
 
-export { Home };
+export { Home, UserChannel };

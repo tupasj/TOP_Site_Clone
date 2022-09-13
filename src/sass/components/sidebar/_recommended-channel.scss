@@ -1,8 +1,18 @@
+.recommended-channels {
+  a {
+    color: var(--regular-black);
+    text-decoration: none;
+  }
+}
+
 .recommended-channel {
   display: grid;
-  grid-template-columns: 30px 1fr 50px;
+  grid-template-columns: 30px 155px 50px;
   font-size: 0.75rem;
   padding-top: 3px;
+  &:hover {
+    background-color: rgba(0,0,0,0.05);
+  }
   &--plain {
     margin: 0;
   }
@@ -31,6 +41,14 @@
   }
   &__name {
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__game-name {
+    &--center {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   &__viewer-count {
     padding-left: 4px;
