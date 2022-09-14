@@ -1,0 +1,28 @@
+.header-right {
+  justify-self: end;
+  align-self: center;
+  margin-right: 9px;
+  &__login-btn {
+    padding: 7px;
+    margin-right: 4px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: bold;
+    background-color: var(--regular-gray);
+    cursor: pointer;
+  }
+  &__signup-btn {
+    padding: 7px;
+    margin-left: 4px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--regular-white);
+    background-color: var(--regular-purple);
+    cursor: pointer;
+  }
+  &__icon {
+    margin-left: 12px;
+    cursor: pointer;
+  }
+}

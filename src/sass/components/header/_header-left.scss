@@ -1,18 +1,25 @@
 @use "../../mixins" as *;
 
 .header-left {
-    @include flex-center();
-    gap: 30px;
-    background-color: var(--regular-white);
-    &__icon {
-        font-size: 35px;
-        &--robot {
-            @extend .header-left__icon;
-            color: var(--regular-purple);
-            margin: 4px 9px 9px 4px;
-        }
+  @include flex-center();
+  gap: 30px;
+  background-color: var(--regular-white);
+  &__icon {
+    font-size: 35px;
+    &--robot {
+      @extend .header-left__icon;
+      color: var(--regular-purple);
+      margin: 4px 9px 9px 4px;
     }
-    &__link {
-        text-decoration: none;
+    &--ellipsis {
+      cursor: pointer;
     }
+  }
+  &__link {
+    text-decoration: none;
+  }
+  &__text {
+    font-weight: bold;
+    color: var(--regular-black);
+  }
 }

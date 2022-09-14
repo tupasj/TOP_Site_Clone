@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <header>
+    <div
+      class="header-left"
+    >
+      <a
+        class="header-left__link"
+        href="/"
+      >
+        <i
+          class="header-left__icon--robot fa-solid fa-robot"
+        />
+      </a>
+      <a
+        class="header-left__link"
+        href="/"
+      >
+        <span
+          class="header-left__text"
+        >
+          Following
+        </span>
+      </a>
+      <a
+        class="header-left__link"
+        href="/"
+      >
+        <span
+          class="header-left__text"
+        >
+          Browse
+        </span>
+      </a>
+      <i
+        class="header-left__icon--ellipsis fa-solid fa-ellipsis-vertical"
+      />
+    </div>
+    <div
+      class="searchbar"
+    >
+      <div
+        class="searchbar__container"
+      >
+        <input
+          class="searchbar__input"
+          placeholder="Search"
+          type="text"
+        />
+        <div
+          class="searchbar__icon-container"
+        >
+          <i
+            class="searchbar__icon--magnifying-glass fa-solid fa-magnifying-glass"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="header-right"
+    >
+      <button
+        class="header-right__login-btn"
+      >
+        Log In
+      </button>
+      <button
+        class="header-right__signup-btn"
+      >
+        Sign Up
+      </button>
+      <i
+        class="header-right__icon fa-regular fa-user"
+      />
+    </div>
+  </header>
+</div>
+`;
