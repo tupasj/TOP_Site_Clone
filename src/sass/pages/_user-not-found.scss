@@ -1,0 +1,14 @@
+@use "../mixins" as *;
+
+.user-not-found {
+  @include flex-center();
+  flex-direction: column;
+  margin-top: 10%;
+  &__text {
+    margin-top: 13px;
+  }
+  &__icon {
+    font-size: 64px;
+    margin-bottom: 15px;
+  }
+}

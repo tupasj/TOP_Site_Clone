@@ -52,6 +52,7 @@ exports[`renders correctly 1`] = `
         />
         <div
           class="searchbar__icon-container"
+          data-testid="searchbar__icon-container"
         >
           <i
             class="searchbar__icon--magnifying-glass fa-solid fa-magnifying-glass"
