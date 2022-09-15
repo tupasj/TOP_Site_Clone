@@ -6,12 +6,12 @@
   &__container {
     display: grid;
     grid-template-columns: auto 32px;
-    gap: 1px;
+    gap: 2px;
     justify-items: center;
     align-items: center;
   }
   &__icon-container {
-    height: 95%;
+    height: 100%;
     width: 100%;
     background-color: var(--light-gray-searchbar);
     display: flex;
@@ -19,14 +19,18 @@
     align-items: center;
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
+    cursor: pointer;
   }
   &__input {
     padding: 11px;
     border: 0;
-    border-radius: 7px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
     background-color: var(--regular-gray-searchbar);
-    &:focus {
-      outline: none;
+    &:focus-visible {
+      outline: 2px solid var(--regular-purple);
+      border-style: solid;
+      border-color: var(--regular-purple);
     }
   }
 }
