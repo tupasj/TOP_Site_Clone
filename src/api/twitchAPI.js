@@ -56,16 +56,35 @@ const fetchTopUsersInfo = async () => {
 };
 
 const fetchCategories = async (category, quantity) => {
-  const categories = await authInstance.get(`https://api.twitch.tv/helix/search/categories?query=${category}&first=${quantity}`)
-  console.log(categories);
+  const categories = await authInstance.get(`https://api.twitch.tv/helix/search/categories?query=${category}&first=${quantity}`);
   return categories;
+}
+
+const fetchTopGames = async (quantity) => {
+  const topGames = await authInstance.get(`https://api.twitch.tv/helix/games/top?first=${quantity}`);
+  return topGames;
+}
+
+const fetchTopClips = async () => {
+  const topGamesResponse = await fetchTopGames(10);
+  const topGamesArray = topGamesResponse.data.data;
+  const topGamesID = topGamesArray.map(item => item.id);
+  const clips = [];
+  for (let i = 0; i < topGamesID.length; i++) {
+    const clipResponse = await authInstance.get(`https://api.twitch.tv/helix/clips?game_id=${topGamesID[i]}&first=1`);
+    const clip = clipResponse.data.data[0];
+    clips.push(clip);
+  };
+  return clips;
 }
 
 const twitchAPI = {
   fetchUsers: fetchUsers,
   fetchStreams: fetchStreams,
   fetchTopUsersInfo: fetchTopUsersInfo,
-  fetchCategories: fetchCategories
+  fetchCategories: fetchCategories,
+  fetchTopGames: fetchTopGames,
+  fetchTopClips: fetchTopClips
 };
 
 export default twitchAPI;
