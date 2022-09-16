@@ -2,7 +2,7 @@
 import { mockResponses } from "../../../api/mockResponses/mockResponses";
 
 const RecommendedChannels = () => {
-  const mockChannelData = mockResponses.topUsers;
+  const mockChannelData = mockResponses.topUsersInfo;
   const channelIndices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (

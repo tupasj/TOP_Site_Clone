@@ -12,43 +12,60 @@ const fetchUsers = async (username) => {
   return users;
 };
 
-const fetchStreams = async () => {
-  const streams = await authInstance.get("https://api.twitch.tv/helix/streams?first=10");
+const fetchStreams = async (quantity) => {
+  const streams = await authInstance.get(`https://api.twitch.tv/helix/streams?first=${quantity}`);
   return streams;
 };
 
 const fetchTopUsersInfo = async () => {
-  const streams = await fetchStreams();
-  const streamsArray = streams.data.data;
-  // console.log('streamsArray: ');
-  // console.log(streamsArray);
-  const userInfoArray = [];
-  for (let i = 0; i < streamsArray.length; i++) {
-    const userInfo = await fetchUsers(streamsArray[i].user_login);
-    userInfoArray.push(userInfo.data.data[0]);
+  const makeStreamsArray = async () => {
+    const streamsResponse = await fetchStreams(10);
+    const streamsArray = streamsResponse.data.data;
+    return streamsArray;
   };
-  // console.log('userInfoArray: ');
-  // console.log(userInfoArray);
-  const topUsersArray = [];
-  for (let i = 0; i < streamsArray.length; i++) {
-    const topUserInfo = {
-      img: userInfoArray[i].profile_image_url,
-      name: userInfoArray[i].display_name,
-      currentlyPlaying: streamsArray[i].game_name,
-      viewerCount: streamsArray[i].viewer_count
+
+  const makeUserInfoArray = async () => {
+    const userInfoArray = [];
+    for (let i = 0; i < streamsArray.length; i++) {
+      const userInfo = await fetchUsers(streamsArray[i].user_login);
+      userInfoArray.push(userInfo.data.data[0]);
     };
-    topUsersArray.push(topUserInfo);
+    return userInfoArray;
   };
-  console.log('topUsersArray: ');
-  console.log(topUsersArray);
+  
+  const makeTopUsersArray = () => {
+    const topUsersArray = [];
+    for (let i = 0; i < streamsArray.length; i++) {
+      const topUserInfo = {
+        img: userInfoArray[i].profile_image_url,
+        name: userInfoArray[i].display_name,
+        login: userInfoArray[i].login,
+        currentlyPlaying: streamsArray[i].game_name,
+        viewerCount: streamsArray[i].viewer_count
+      };
+      topUsersArray.push(topUserInfo);
+    };
+    return topUsersArray;
+  };
+
+  const streamsArray = await makeStreamsArray();
+  const userInfoArray = await makeUserInfoArray(streamsArray);
+  const topUsersArray = makeTopUsersArray(userInfoArray);
 
   return topUsersArray;
 };
 
+const fetchCategories = async (category, quantity) => {
+  const categories = await authInstance.get(`https://api.twitch.tv/helix/search/categories?query=${category}&first=${quantity}`)
+  console.log(categories);
+  return categories;
+}
+
 const twitchAPI = {
   fetchUsers: fetchUsers,
   fetchStreams: fetchStreams,
-  fetchTopUsersInfo: fetchTopUsersInfo
+  fetchTopUsersInfo: fetchTopUsersInfo,
+  fetchCategories: fetchCategories
 };
 
 export default twitchAPI;

@@ -35,12 +35,20 @@ const mockResponses = {
       },
     ],
   },
-  topUsers: [
+  topUsersInfo: [
     {
-      img: "https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png",
-      name: "Asmongold",
-      currentlyPlaying: "Minecraft",
-      viewerCount: 65528,
+      currentlyPlaying: "VALORANT",
+      img: "https://static-cdn.jtvnw.net/jtv_user_pictures/f04d2a14-8d63-4cd5-a469-7ec2cd6e5ce3-profile_image-300x300.png",
+      login: "tarik",
+      name: "tarik",
+      viewerCount: 71184,
+    },
+  ],
+  categories: [
+    {
+      box_art_url: "https://static-cdn.jtvnw.net/ttv-boxart/509658-52x72.jpg",
+      id: "509658",
+      name: "Just Chatting",
     },
   ],
 };
