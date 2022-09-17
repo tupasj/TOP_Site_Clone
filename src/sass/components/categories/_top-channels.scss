@@ -1,0 +1,15 @@
+.top-channels {
+  .top-channel__content {
+    &__info {
+      display: flex;
+      &--right {
+        display: flex;
+        flex-direction: column;
+      }
+      &__streamer-pic {
+        height: 42px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

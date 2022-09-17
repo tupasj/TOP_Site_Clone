@@ -82,18 +82,28 @@ const fetchTopGameStreamsInfo = async () => {
   const topGamesResponse = await fetchTopGames(10);
   const topGamesArray = topGamesResponse.data.data;
   const topGamesID = topGamesArray.map(item => item.id);
+
+  const addThumbnailSize = (thumbnailURL) => thumbnailURL.replace('{width}', '315').replace('{height}', '180');
   
   const topGamesStreams = [];
   for (let i = 0; i < topGamesID.length; i++) {
     const topGameStreamsResponse = await authInstance.get(`https://api.twitch.tv/helix/streams?game_id=${topGamesID[i]}`);
     const topGameStream = topGameStreamsResponse.data.data[0];
+
+    const adjustedThumbnail = addThumbnailSize(topGameStream.thumbnail_url);
+    const userPicResponse = await fetchUsers(topGameStream.user_login);
+    const userPic = userPicResponse.data.data[0].profile_image_url;
+
     const topGameInfoObject = {
-      thumbnail: topGameStream.thumbnail_url,
+      gameName: topGameStream.game_name,
+      thumbnail: adjustedThumbnail,
       streamTitle: topGameStream.title,
       streamerName: topGameStream.user_name,
+      streamerProfilePic: userPic,
       tags: topGameStream.tag_ids,
       viewerCount: topGameStream.viewer_count,
     };
+
     topGamesStreams.push(topGameInfoObject);
   };
 
