@@ -84,6 +84,9 @@ const fetchTopGameStreamsInfo = async () => {
   const topGamesID = topGamesArray.map(item => item.id);
 
   const addThumbnailSize = (thumbnailURL) => thumbnailURL.replace('{width}', '315').replace('{height}', '180');
+  // const stringifyTags = () => {
+
+  // }
   
   const topGamesStreams = [];
   for (let i = 0; i < topGamesID.length; i++) {
@@ -121,6 +124,12 @@ const fetchTopGameStreamsInfo = async () => {
 //   // Return 10 streams using just chatting id
 // }
 
+// const fetchTags = async () => {
+//   // 6ea6bca4-4712-4ab9-a906-e3336a9d8039
+//   const tags = await authInstance.get(`https://api.twitch.tv/helix/tags/streams?6ea6bca4`);
+//   return tags;
+// }
+
 const twitchAPI = {
   fetchUsers: fetchUsers,
   fetchStreams: fetchStreams,
@@ -128,7 +137,8 @@ const twitchAPI = {
   fetchCategories: fetchCategories,
   fetchTopGames: fetchTopGames,
   fetchTopClipsInfo: fetchTopClipsInfo,
-  fetchTopGameStreamsInfo: fetchTopGameStreamsInfo
+  fetchTopGameStreamsInfo: fetchTopGameStreamsInfo,
+  // fetchTags: fetchTags
 };
 
 export default twitchAPI;
