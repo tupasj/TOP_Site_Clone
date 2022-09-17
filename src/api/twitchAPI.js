@@ -78,6 +78,24 @@ const fetchTopClips = async () => {
   return clips;
 }
 
+// Can probably refactor most of the structure in fetchTopClips() into its own reusable function for 'fetchTOP' functions
+// Can probably change fetchStreams to accept a search by ID parameter
+const fetchTopGameStreams = async () => {
+  // get top games -> get streams
+  const topGamesResponse = await fetchTopGames(10);
+  const topGamesArray = topGamesResponse.data.data;
+  const topGamesID = topGamesArray.map(item => item.id);
+  const topGamesStreams = [];
+  for (let i = 0; i < topGamesID.length; i++) {
+    const topGameStreamResponse = await fetchStreams(1);
+  }
+}
+
+const fetchTopCategoryStreams = async () => {
+  // get category -> get streams
+  const categoryResponse = await fetchCategories('just chatting', 1);
+}
+
 const twitchAPI = {
   fetchUsers: fetchUsers,
   fetchStreams: fetchStreams,

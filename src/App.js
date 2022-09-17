@@ -9,7 +9,7 @@ import { UserNotFound } from "./pages/Error/UserNotFound";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="page-wrapper home">
+      <div className="page-wrapper">
         <Header />
         <Sidebar />
         <main>

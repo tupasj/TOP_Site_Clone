@@ -15,7 +15,6 @@ const FeaturedLivestream = () => {
 
   return (
     <article className="featured-livestream">
-      Featured Livestream
       {topUserName && (
         <iframe
           data-testid="video-player"

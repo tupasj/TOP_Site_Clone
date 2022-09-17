@@ -22,7 +22,7 @@ const RecommendedChannels = () => {
       {topUsersInfo[0] &&
         topUsersInfo.map((channel) => {
           return (
-            <Link key={channel.name} to={`/channel/${channel.name}`}>
+            <Link key={channel.login} to={`/channel/${channel.login}`}>
               <div className="recommended-channel">
                 <div className="recommended-channel__section--plain">
                   <img
