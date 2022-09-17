@@ -1,3 +1,7 @@
-import { Categories } from "./Categories";
+import { TopChannels } from "./TopChannels";
+import { TopCategories } from "./TopCategories";
+import { CategoryTags } from "./CategoryTags";
+import { Streams } from "./Streams";
+import { Clips } from "./Clips";
 
-export { Categories };
+export { TopChannels, TopCategories, CategoryTags, Streams, Clips };

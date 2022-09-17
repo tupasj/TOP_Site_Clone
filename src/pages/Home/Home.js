@@ -1,11 +1,16 @@
 import { FeaturedLivestream } from "../../components/Streams";
-import { Categories } from "../../components/Categories";
+import { TopChannels, TopCategories, CategoryTags, Streams, Clips } from "../../components/Categories";
 
 const Home = () => {
   return (
     <>
       <FeaturedLivestream />
-      <Categories />
+      <TopChannels />
+      <TopCategories  />
+      <CategoryTags />
+      {/* Streams x4 */}
+      <Streams />
+      <Clips />
     </>
   );
 };
