@@ -58,14 +58,14 @@ const fetchTopUsersInfo = async () => {
 const fetchCategories = async (category, quantity) => {
   const categories = await authInstance.get(`https://api.twitch.tv/helix/search/categories?query=${category}&first=${quantity}`);
   return categories;
-}
+};
 
 const fetchTopGames = async (quantity) => {
   const topGames = await authInstance.get(`https://api.twitch.tv/helix/games/top?first=${quantity}`);
   return topGames;
-}
+};
 
-const fetchTopClips = async () => {
+const fetchTopClipsInfo = async () => {
   const topGamesResponse = await fetchTopGames(10);
   const topGamesArray = topGamesResponse.data.data;
   const topGamesID = topGamesArray.map(item => item.id);
@@ -76,25 +76,40 @@ const fetchTopClips = async () => {
     clips.push(clip);
   };
   return clips;
-}
+};
 
-// Can probably refactor most of the structure in fetchTopClips() into its own reusable function for 'fetchTOP' functions
-// Can probably change fetchStreams to accept a search by ID parameter
-const fetchTopGameStreams = async () => {
-  // get top games -> get streams
+const fetchTopGameStreamsInfo = async () => {
   const topGamesResponse = await fetchTopGames(10);
   const topGamesArray = topGamesResponse.data.data;
   const topGamesID = topGamesArray.map(item => item.id);
+  
   const topGamesStreams = [];
   for (let i = 0; i < topGamesID.length; i++) {
-    const topGameStreamResponse = await fetchStreams(1);
-  }
-}
+    const topGameStreamsResponse = await authInstance.get(`https://api.twitch.tv/helix/streams?game_id=${topGamesID[i]}`);
+    const topGameStream = topGameStreamsResponse.data.data[0];
+    const topGameInfoObject = {
+      thumbnail: topGameStream.thumbnail_url,
+      streamTitle: topGameStream.title,
+      streamerName: topGameStream.user_name,
+      tags: topGameStream.tag_ids,
+      viewerCount: topGameStream.viewer_count,
+    };
+    topGamesStreams.push(topGameInfoObject);
+  };
 
-const fetchTopCategoryStreams = async () => {
-  // get category -> get streams
-  const categoryResponse = await fetchCategories('just chatting', 1);
-}
+  return topGamesStreams;
+};
+
+// const fetchTopCategoryStreamsInfo = async () => {
+//   // get category -> get streams
+//   const categoryResponse = await fetchCategories('just chatting', 1);
+//   const streamsByCategory = await authInstance.get(`https://api.twitch.tv/helix/streams?game_id=`)
+//   const topCategoryStreams = [];
+//   for (let i = 0; i < 10; i++) {
+
+//   }
+//   // Return 10 streams using just chatting id
+// }
 
 const twitchAPI = {
   fetchUsers: fetchUsers,
@@ -102,7 +117,8 @@ const twitchAPI = {
   fetchTopUsersInfo: fetchTopUsersInfo,
   fetchCategories: fetchCategories,
   fetchTopGames: fetchTopGames,
-  fetchTopClips: fetchTopClips
+  fetchTopClipsInfo: fetchTopClipsInfo,
+  fetchTopGameStreamsInfo: fetchTopGameStreamsInfo
 };
 
 export default twitchAPI;
