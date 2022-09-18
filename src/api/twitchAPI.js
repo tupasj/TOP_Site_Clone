@@ -109,6 +109,7 @@ const fetchTopGameStreamsInfo = async () => {
       gameName: topGameStream.game_name,
       thumbnail: adjustedThumbnail,
       streamTitle: topGameStream.title,
+      streamerLogin: topGameStream.user_login,
       streamerName: topGameStream.user_name,
       streamerProfilePic: userPic,
       tags: stringifiedTags,
