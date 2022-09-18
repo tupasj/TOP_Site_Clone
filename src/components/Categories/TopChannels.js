@@ -82,7 +82,14 @@ const TopChannels = () => {
         Live channels we think you'll like
       </h2>
       {topChannels[0] && contentRow(topChannels, 1)}
-      <div className="top-channels__show-more"></div>
+      <div className="top-channels__show-more">
+        <span className="top-channels__show-more__line"></span>
+        <span className="top-channels__show-more__text">
+          Show more
+          <i className="top-channels__show-more__icon fa-solid fa-chevron-down"></i>
+        </span>
+        <span className="top-channels__show-more__line"></span>
+      </div>
     </article>
   );
 };
