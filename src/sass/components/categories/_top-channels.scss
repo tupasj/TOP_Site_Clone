@@ -1,5 +1,29 @@
 .top-channels {
   .top-channel__content {
+    &__thumbnail-container {
+      &__live-notice {
+        position: relative;
+        right: 304px;
+        bottom: 154px;
+        padding: 4px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--regular-white);
+        background-color: var(--regular-red);
+      }
+      &__viewer-count {
+        position: relative;
+        right: 346px;
+        bottom: 17px;
+        padding: 4px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--regular-white);
+        background-color: rgba(0, 0, 0, 0.42);
+      }
+    }
     &__info {
       display: flex;
       &--right {

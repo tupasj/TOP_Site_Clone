@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import { useState, useEffect } from "react";
 import twitchAPI from "../../api/twitchAPI";
+import { formatViewerCount } from "../../utils/formatNums";
 
 const TopChannels = () => {
   const [topChannels, setTopChannels] = useState([]);
@@ -24,11 +25,15 @@ const TopChannels = () => {
         {contentRowArray.map((item) => {
           return (
             <div key={item.streamerName} className="top-channel__content">
-              <img
-                className="top-channel__content__img"
-                src={item.thumbnail}
-                alt="stream thumbnail"
-              ></img>
+              <div className="top-channel__content__thumbnail-container">
+                <img
+                  className="top-channel__content__thumbnail-container__thumbnail"
+                  src={item.thumbnail}
+                  alt="stream thumbnail"
+                ></img>
+                <span className="top-channel__content__thumbnail-container__live-notice">LIVE</span>
+                <span className="top-channel__content__thumbnail-container__viewer-count">{formatViewerCount(item.viewerCount)} viewers</span>
+              </div>
               <div className="top-channel__content__info">
                 <div className="top-channel__content__info--left">
                   <img
