@@ -84,9 +84,16 @@ const fetchTopGameStreamsInfo = async () => {
   const topGamesID = topGamesArray.map(item => item.id);
 
   const addThumbnailSize = (thumbnailURL) => thumbnailURL.replace('{width}', '315').replace('{height}', '180');
-  // const stringifyTags = () => {
 
-  // }
+  const stringifyTags = async (tagIDs) => {
+    const stringifiedTags = [];
+    for (let i = 0; i < tagIDs.length; i++) {
+      const tagStringsResponse = await authInstance.get(`https://api.twitch.tv/helix/tags/streams?tag_id=${tagIDs[i]}`)
+      const tagString = tagStringsResponse.data.data[0].localization_names["en-us"];
+      stringifiedTags.push(tagString);
+    }
+    return stringifiedTags;
+  };
   
   const topGamesStreams = [];
   for (let i = 0; i < topGamesID.length; i++) {
@@ -96,6 +103,7 @@ const fetchTopGameStreamsInfo = async () => {
     const adjustedThumbnail = addThumbnailSize(topGameStream.thumbnail_url);
     const userPicResponse = await fetchUsers(topGameStream.user_login);
     const userPic = userPicResponse.data.data[0].profile_image_url;
+    const stringifiedTags = await stringifyTags(topGameStream.tag_ids);
 
     const topGameInfoObject = {
       gameName: topGameStream.game_name,
@@ -103,13 +111,14 @@ const fetchTopGameStreamsInfo = async () => {
       streamTitle: topGameStream.title,
       streamerName: topGameStream.user_name,
       streamerProfilePic: userPic,
-      tags: topGameStream.tag_ids,
+      tags: stringifiedTags,
       viewerCount: topGameStream.viewer_count,
     };
-
     topGamesStreams.push(topGameInfoObject);
   };
 
+  console.log('topGamesStreams: ');
+  console.log(topGamesStreams);
   return topGamesStreams;
 };
 
@@ -124,12 +133,6 @@ const fetchTopGameStreamsInfo = async () => {
 //   // Return 10 streams using just chatting id
 // }
 
-// const fetchTags = async () => {
-//   // 6ea6bca4-4712-4ab9-a906-e3336a9d8039
-//   const tags = await authInstance.get(`https://api.twitch.tv/helix/tags/streams?6ea6bca4`);
-//   return tags;
-// }
-
 const twitchAPI = {
   fetchUsers: fetchUsers,
   fetchStreams: fetchStreams,
@@ -138,7 +141,6 @@ const twitchAPI = {
   fetchTopGames: fetchTopGames,
   fetchTopClipsInfo: fetchTopClipsInfo,
   fetchTopGameStreamsInfo: fetchTopGameStreamsInfo,
-  // fetchTags: fetchTags
 };
 
 export default twitchAPI;

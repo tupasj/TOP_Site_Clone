@@ -23,7 +23,7 @@ const TopChannels = () => {
       <div className="top-channels__content">
         {contentRowArray.map((item) => {
           return (
-            <div className="top-channel__content">
+            <div key={item.streamerName} className="top-channel__content">
               <img
                 className="top-channel__content__img"
                 src={item.thumbnail}
@@ -47,7 +47,13 @@ const TopChannels = () => {
                   <span className="top-channel__content__info__game-name">
                     {item.gameName}
                   </span>
-                  {/* <div className="top-channel__content__info__tags">{topChannels[0].tags}</div> */}
+                  <div className="top-channel__content__info__tags">
+                    {item.tags.map((tag) => {
+                      return (
+                        <span className="top-channel__content__info__tag">{tag}</span>
+                      )
+                    })}
+                    </div>
                 </div>
               </div>
             </div>
@@ -62,12 +68,7 @@ const TopChannels = () => {
       const streamsInfo = await twitchAPI.fetchTopGameStreamsInfo();
       setTopChannels(streamsInfo);
     };
-    // const getTags = async () => {
-    //   const tags = await twitchAPI.fetchTags();
-    //   console.log(tags);
-    // }
     getTopChannels();
-    // getTags();
   }, []);
 
   return (
