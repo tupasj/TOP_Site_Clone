@@ -20,49 +20,49 @@ const ContentRow = (props) => {
   }
 
   return (
-    <div className="top-channels__content">
+    <>
       {contentRowArray.map((item) => {
         return (
-          <div key={item.streamerName} className="top-channel__content">
-            <div className="top-channel__content__thumbnail-container">
+          <div key={item.streamerName} className="content-row__content">
+            <div className="content-row__content__thumbnail-container">
               <Link to={`/channel/${item.streamerLogin}`}>
                 <img
-                  className="top-channel__content__thumbnail-container__thumbnail"
+                  className="content-row__content__thumbnail-container__thumbnail"
                   src={item.thumbnail}
                   alt="stream thumbnail"
                 ></img>
               </Link>
-              <span className="top-channel__content__thumbnail-container__live-notice">
+              <span className="content-row__content__thumbnail-container__live-notice">
                 LIVE
               </span>
-              <span className="top-channel__content__thumbnail-container__viewer-count">
+              <span className="content-row__content__thumbnail-container__viewer-count">
                 {formatViewerCount(item.viewerCount)} viewers
               </span>
             </div>
-            <div className="top-channel__content__info">
-              <div className="top-channel__content__info--left">
+            <div className="content-row__content__info">
+              <div className="content-row__content__info--left">
                 <img
-                  className="top-channel__content__info__streamer-pic"
+                  className="content-row__content__info__streamer-pic"
                   src={item.streamerProfilePic}
                   alt="profile image"
                 ></img>
               </div>
-              <div className="top-channel__content__info--right">
-                <span className="top-channel__content__info__title">
+              <div className="content-row__content__info--right">
+                <span className="content-row__content__info__title">
                   {item.streamTitle}
                 </span>
-                <span className="top-channel__content__info__username">
+                <span className="content-row__content__info__username">
                   {item.streamerName}
                 </span>
-                <span className="top-channel__content__info__game-name">
+                <span className="content-row__content__info__game-name">
                   {item.gameName}
                 </span>
-                <div className="top-channel__content__info__tags">
+                <div className="content-row__content__info__tags">
                   {item.tags.map((tag) => {
                     return (
                       <span
                         key={tag}
-                        className="top-channel__content__info__tag"
+                        className="content-row__content__info__tag"
                       >
                         {tag}
                       </span>
@@ -74,7 +74,7 @@ const ContentRow = (props) => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 

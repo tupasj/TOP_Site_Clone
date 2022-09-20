@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { ContentRow } from "./ContentRow";
 import { Divider } from "../UI/Divider.js";
 import { ShowMore } from "../UI/ShowMore.js";
@@ -16,17 +16,19 @@ const Streams = (props) => {
   return (
     <article className="streams">
       <h2 className="streams__title">{title}</h2>
-      <div className="streams__content">
-      {<ContentRow contentArray={contents} rowNum={1} />}
+      <div className="streams__content content-row">
+        {<ContentRow contentArray={contents} rowNum={1} />}
+      </div>
       {showMore ? (
         <>
-          {<ContentRow contentArray={contents} rowNum={2} />}
+          <div className="streams__content content-row">
+            {<ContentRow contentArray={contents} rowNum={2} />}
+          </div>
           <Divider />
         </>
       ) : (
         <ShowMore onClick={showMoreContent} />
       )}
-      </div>
     </article>
   );
 };

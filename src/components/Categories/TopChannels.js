@@ -25,10 +25,16 @@ const TopChannels = () => {
       <h2 className="top-channels__title">
         Live channels we think you'll like
       </h2>
-      {topChannels[0] && <ContentRow contentArray={topChannels} rowNum={1} />}
+      {topChannels[0] && (
+        <div className="top-channels__content content-row">
+          <ContentRow contentArray={topChannels} rowNum={1} />
+        </div>
+      )}
       {showMore ? (
         <>
-          {<ContentRow contentArray={topChannels} rowNum={2} />}
+          <div className="top-channels__content content-row">
+            {<ContentRow contentArray={topChannels} rowNum={2} />}
+          </div>
           <Divider />
         </>
       ) : (
