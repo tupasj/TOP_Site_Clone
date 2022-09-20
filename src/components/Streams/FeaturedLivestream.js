@@ -8,7 +8,7 @@ const FeaturedLivestream = () => {
   useEffect(() => {
     const getTopUser = async () => {
       const topUserNameResponse = await twitchAPI.fetchTopUsersInfo();
-      setTopUserName(topUserNameResponse[9].login);
+      setTopUserName(topUserNameResponse[6].login);
     };
     getTopUser();
   }, []);
