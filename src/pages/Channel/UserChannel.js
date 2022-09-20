@@ -1,4 +1,4 @@
-import { UserLivestream } from "../../components/Streams/UserLivestream";
+import { UserLivestream } from "../../components/Livestreams/UserLivestream";
 
 const UserChannel = () => {
   return (

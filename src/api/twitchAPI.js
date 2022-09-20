@@ -62,8 +62,6 @@ const fetchCategories = async (category, quantity) => {
 
 const fetchTopGames = async (quantity) => {
   const topGames = await authInstance.get(`https://api.twitch.tv/helix/games/top?first=${quantity}`);
-  console.log('topGames: ');
-  console.log(topGames);
   return topGames;
 };
 
@@ -138,9 +136,8 @@ const fetchTopCategories = async () => {
       img: sizedImg,
     };
     topCategoriesInfoArray.push(topCategoryInfoObj);
-  }
-  console.log('topCategoriesInfoArray: ');
-  console.log(topCategoriesInfoArray);
+  };
+  
   return topCategoriesInfoArray;
 }
 

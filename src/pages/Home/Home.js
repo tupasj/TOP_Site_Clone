@@ -1,4 +1,4 @@
-import { FeaturedLivestream } from "../../components/Streams";
+import { FeaturedLivestream } from "../../components/Livestreams";
 import { TopChannels, TopCategories, CategoryTags, Streams, Clips } from "../../components/Categories";
 
 const Home = () => {
