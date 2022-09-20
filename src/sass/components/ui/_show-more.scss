@@ -1,0 +1,16 @@
+.ui {
+  &__show-more {
+    margin-top: 22px;
+    cursor: pointer;
+    &__line {
+      display: inline-block;
+      border-top: 1px solid var(--regular-gray-divider);
+      width: 45%;
+    }
+    &__text {
+      margin-left: 22px;
+      margin-right: 22px;
+      color: var(--regular-purple);
+    }
+  }
+}

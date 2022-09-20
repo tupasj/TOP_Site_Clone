@@ -1,0 +1,26 @@
+@use '../../mixins' as *;
+
+.top-categories {
+  margin-left: 11px;
+  margin-right: 11px;
+  margin-bottom: 29px;
+  &__title {
+    margin-bottom: 11px;
+    font-weight: bold;
+    &--purple {
+      color: var(--regular-purple);
+    }
+  }
+  &__contents {
+    display: flex;
+    justify-content: space-between;
+    &__category {
+      width: 150px;
+      &__title {
+        @include contain-text;
+        margin-top: 6px;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -62,6 +62,8 @@ const fetchCategories = async (category, quantity) => {
 
 const fetchTopGames = async (quantity) => {
   const topGames = await authInstance.get(`https://api.twitch.tv/helix/games/top?first=${quantity}`);
+  console.log('topGames: ');
+  console.log(topGames);
   return topGames;
 };
 
@@ -123,16 +125,24 @@ const fetchTopGameStreamsInfo = async () => {
   return topGamesStreams;
 };
 
-// const fetchTopCategoryStreamsInfo = async () => {
-//   // get category -> get streams
-//   const categoryResponse = await fetchCategories('just chatting', 1);
-//   const streamsByCategory = await authInstance.get(`https://api.twitch.tv/helix/streams?game_id=`)
-//   const topCategoryStreams = [];
-//   for (let i = 0; i < 10; i++) {
+const fetchTopCategories = async () => {
+  const topCategoriesResponse = await fetchTopGames(10);
+  const topCategoriesArray = topCategoriesResponse.data.data;
+  const addThumbnailSize = (thumbnailURL) => thumbnailURL.replace('{width}', '150').replace('{height}', '200');
 
-//   }
-//   // Return 10 streams using just chatting id
-// }
+  const topCategoriesInfoArray = [];
+  for (let i = 0; i < topCategoriesArray.length; i++) {
+    const sizedImg = addThumbnailSize(topCategoriesArray[i].box_art_url);
+    const topCategoryInfoObj = {
+      title: topCategoriesArray[i].name,
+      img: sizedImg,
+    };
+    topCategoriesInfoArray.push(topCategoryInfoObj);
+  }
+  console.log('topCategoriesInfoArray: ');
+  console.log(topCategoriesInfoArray);
+  return topCategoriesInfoArray;
+}
 
 const twitchAPI = {
   fetchUsers: fetchUsers,
@@ -142,6 +152,7 @@ const twitchAPI = {
   fetchTopGames: fetchTopGames,
   fetchTopClipsInfo: fetchTopClipsInfo,
   fetchTopGameStreamsInfo: fetchTopGameStreamsInfo,
+  fetchTopCategories: fetchTopCategories
 };
 
 export default twitchAPI;

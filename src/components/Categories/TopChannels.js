@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import twitchAPI from "../../api/twitchAPI";
 import { formatViewerCount } from "../../utils/formatNums";
+import { Divider } from "../UI/Divider.js";
+import { ShowMore } from "../UI/ShowMore.js";
 
 const TopChannels = () => {
   const [topChannels, setTopChannels] = useState([]);
@@ -26,10 +28,9 @@ const TopChannels = () => {
       <div className="top-channels__content">
         {contentRowArray.map((item) => {
           return (
-            <div className="top-channel__content">
+            <div key={item.streamerName} className="top-channel__content">
               <div className="top-channel__content__thumbnail-container">
                 <Link
-                  key={item.streamerName}
                   to={`/channel/${item.streamerLogin}`}
                 >
                   <img
@@ -66,7 +67,7 @@ const TopChannels = () => {
                   <div className="top-channel__content__info__tags">
                     {item.tags.map((tag) => {
                       return (
-                        <span className="top-channel__content__info__tag">
+                        <span key={tag} className="top-channel__content__info__tag">
                           {tag}
                         </span>
                       );
@@ -102,20 +103,10 @@ const TopChannels = () => {
       {showMore ? (
         <>
           {contentRow(topChannels, 2)}
-          <div className="top-channels__divider"></div>
+          <Divider />
         </>
       ) : (
-        <div className="top-channels__show-more">
-          <span className="top-channels__show-more__line"></span>
-          <span
-            className="top-channels__show-more__text"
-            onClick={showMoreContent}
-          >
-            Show more
-            <i className="top-channels__show-more__icon fa-solid fa-chevron-down"></i>
-          </span>
-          <span className="top-channels__show-more__line"></span>
-        </div>
+        <ShowMore onClick={showMoreContent} />
       )}
     </article>
   );
