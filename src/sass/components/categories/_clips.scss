@@ -3,7 +3,7 @@
 .clips {
   margin-left: 25px;
   margin-right: 25px;
-  margin-bottom: 29px;
+  margin-bottom: 71px;
   &__title {
     font-weight: bold;
   }
@@ -62,19 +62,6 @@
       }
       &__game-name {
         @include contain-text();
-      }
-      &__tags {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-      &__tag {
-        color: var(--dark-gray-text);
-        background-color: var(--regular-gray-bubble);
-        padding: 6px;
-        border-radius: 11px;
-        font-size: 11px;
-        font-weight: bold;
       }
     }
   }

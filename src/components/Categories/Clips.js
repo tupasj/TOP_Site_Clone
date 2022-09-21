@@ -3,10 +3,31 @@
 import { useState, useEffect } from "react";
 import twitchAPI from "../../api/twitchAPI";
 import { formatDuration } from "../../utils/formatNums";
+import { Modal } from "../UI/Modal";
 
 const Clips = () => {
   const [topClipsInfo, setTopClipsInfo] = useState([]);
   const [imageURLs, setImageUrls] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const modalContent = () => {
+    return (
+      <iframe
+        src="https://clips.twitch.tv/embed?clip=IncredulousAbstemiousFennelImGlitch&parent=localhost"
+        height="360"
+        width="640"
+        allowFullScreen
+      ></iframe>
+    );
+  };
 
   useEffect(() => {
     const getTopClipsInfo = async () => {
@@ -14,9 +35,11 @@ const Clips = () => {
       setTopClipsInfo(clipsInfoArray);
       const imageURLsArray = [];
       for (let i = 0; i < 5; i++) {
-        const userInfoResponse = await twitchAPI.fetchUserByID(clipsInfoArray[i].broadcaster_id);
+        const userInfoResponse = await twitchAPI.fetchUserByID(
+          clipsInfoArray[i].broadcaster_id
+        );
         imageURLsArray.push(userInfoResponse.profile_image_url);
-      };
+      }
       setImageUrls(imageURLsArray);
     };
     getTopClipsInfo();
@@ -30,7 +53,10 @@ const Clips = () => {
           topClipsInfo.map((item, index) => {
             return (
               <div key={item.id} className="clips__content">
-                <div className="clips__content__thumbnail-container">
+                <div
+                  className="clips__content__thumbnail-container"
+                  onClick={openModal}
+                >
                   <img
                     className="clips__content__thumbnail-container__thumbnail"
                     src={item.thumbnail_url}
@@ -64,6 +90,11 @@ const Clips = () => {
             );
           })}
       </div>
+      {modalIsOpen && (
+        <Modal closeModal={closeModal}>
+          {modalContent()}
+        </Modal>
+      )}
     </article>
   );
 };
