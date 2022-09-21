@@ -1,0 +1,81 @@
+@use "../../mixins" as *;
+
+.clips {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 29px;
+  &__title {
+    font-weight: bold;
+  }
+  &__contents {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 11px;
+  }
+  .clips__content {
+    flex-direction: column;
+    width: 315px;
+    &__thumbnail-container {
+      position: relative;
+      &__thumbnail {
+        height: 180px;
+      }
+      &__clip-duration {
+        position: absolute;
+        left: 9px;
+        top: 9px;
+        padding: 4px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--regular-white);
+        background-color: rgba(0, 0, 0, 0.52);
+      }
+    }
+    &__info {
+      display: grid;
+      grid-template-columns: 46px 265px;
+      gap: 4px;
+      margin-top: 7px;
+      &--left {
+        justify-self: center;
+      }
+      &__streamer-pic {
+        height: 42px;
+        border-radius: 50%;
+      }
+      &--right {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      &__title {
+        @include contain-text();
+        font-weight: bold;
+      }
+      &__username {
+        @include contain-text();
+      }
+      &__game-name {
+        @include contain-text();
+      }
+      &__tags {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      &__tag {
+        color: var(--dark-gray-text);
+        background-color: var(--regular-gray-bubble);
+        padding: 6px;
+        border-radius: 11px;
+        font-size: 11px;
+        font-weight: bold;
+      }
+    }
+  }
+}

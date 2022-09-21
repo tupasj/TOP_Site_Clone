@@ -15,4 +15,6 @@ const formatViewerCount = (viewerCount) => {
   }
 };
 
-export { formatViewerCount };
+const formatDuration = (duration) => `0:${Math.floor(duration)}`;
+
+export { formatViewerCount, formatDuration };
