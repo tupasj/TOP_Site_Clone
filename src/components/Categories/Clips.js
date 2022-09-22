@@ -9,19 +9,21 @@ const Clips = () => {
   const [topClipsInfo, setTopClipsInfo] = useState([]);
   const [imageURLs, setImageUrls] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalContentID, setModalContentID] = useState('');
 
-  const openModal = () => {
+  const openModal = (id) => {
     setModalIsOpen(true);
+    setModalContentID(id);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
   };
 
-  const modalContent = () => {
+  const modalContent = (id) => {
     return (
       <iframe
-        src="https://clips.twitch.tv/embed?clip=IncredulousAbstemiousFennelImGlitch&parent=localhost"
+        src={`https://clips.twitch.tv/embed?clip=${id}&parent=localhost`}
         height="360"
         width="640"
         allowFullScreen
@@ -55,7 +57,7 @@ const Clips = () => {
               <div key={item.id} className="clips__content">
                 <div
                   className="clips__content__thumbnail-container"
-                  onClick={openModal}
+                  onClick={() => {openModal(item.id)}}
                 >
                   <img
                     className="clips__content__thumbnail-container__thumbnail"
@@ -92,7 +94,7 @@ const Clips = () => {
       </div>
       {modalIsOpen && (
         <Modal closeModal={closeModal}>
-          {modalContent()}
+          {modalContent(modalContentID)}
         </Modal>
       )}
     </article>

@@ -6,7 +6,7 @@ const Modal = (props) => {
     position: "fixed",
     top: "50%",
     left: "50%",
-    transform: "translate(-50%, -50%)",
+    transform: "translate(-50%, -50%)"
   };
 
   const overlayStyles = {
@@ -15,12 +15,12 @@ const Modal = (props) => {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.78)",
+    backgroundColor: "rgba(0, 0, 0, 0.78)"
   };
 
   return (
-    <div className="modal" style={overlayStyles} onClick={closeModal}>
-      <div className="modal-content" style={modalStyles}>
+    <div style={overlayStyles} onClick={closeModal}>
+      <div style={modalStyles}>
         {children}
       </div>
     </div>

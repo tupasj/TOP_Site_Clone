@@ -174,6 +174,22 @@ const fetchUserByID = async (ID) => {
   return user;
 };
 
+const fetchLivestreamerInfo = async (userLogin) => {
+  const userInfoResponse = await authInstance.get(`https://api.twitch.tv/helix/users?login=${userLogin}`);
+  const userInfo = userInfoResponse.data.data[0];
+  console.log('userInfo: ');
+  console.log(userInfo);
+  return userInfo;
+};
+
+const fetchLivestreamInfo = async (userLogin) => {
+  const streamsResponse = await authInstance.get(`https://api.twitch.tv/helix/streams?user_login=${userLogin}`);
+  const streams = streamsResponse.data.data[0];
+  console.log('streams: ');
+  console.log(streams);
+  return streams;
+}
+
 const twitchAPI = {
   fetchUsers: fetchUsers,
   fetchStreams: fetchStreams,
@@ -183,7 +199,9 @@ const twitchAPI = {
   fetchTopClipsInfo: fetchTopClipsInfo,
   fetchTopGameStreamsInfo: fetchTopGameStreamsInfo,
   fetchTopCategories: fetchTopCategories,
-  fetchUserByID: fetchUserByID
+  fetchUserByID: fetchUserByID,
+  fetchLivestreamerInfo: fetchLivestreamerInfo,
+  fetchLivestreamInfo
 };
 
 export default twitchAPI;

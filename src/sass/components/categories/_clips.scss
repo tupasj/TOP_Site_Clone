@@ -21,6 +21,7 @@
     width: 315px;
     &__thumbnail-container {
       position: relative;
+      cursor: pointer;
       &__thumbnail {
         height: 180px;
       }

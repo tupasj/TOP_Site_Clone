@@ -1,0 +1,42 @@
+.livestreamer-info {
+  display: flex;
+  width: 1280px;
+  margin: 18px;
+  gap: 11px;
+  &__image-container {
+    position: relative;
+    &__profile-picture {
+      width: 70px;
+      border-radius: 50%;
+      outline-offset: 2px;
+      outline: 2px solid var(--regular-purple);
+    }
+    &__live-notice {
+      position: absolute;
+      left: 18px;
+      top: 55px;
+      padding: 2px;
+      font-size: 12px;
+      font-weight: bold;
+      border: 2px solid var(--light-gray);
+      border-radius: 4px;
+      color: var(--regular-white);
+      background-color: var(--regular-red);
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    &__streamer-name {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    &__stream-title {
+      font-weight: bold;
+    }
+    &__game-name {
+      color: var(--regular-purple);
+    }
+  }
+}
