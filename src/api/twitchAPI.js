@@ -75,8 +75,6 @@ const fetchTopClipsInfo = async () => {
     const clip = clipResponse.data.data[0];
     clips.push(clip);
   };
-  console.log('clips: ');
-  console.log(clips);
   return clips;
 };
 
@@ -177,16 +175,12 @@ const fetchUserByID = async (ID) => {
 const fetchLivestreamerInfo = async (userLogin) => {
   const userInfoResponse = await authInstance.get(`https://api.twitch.tv/helix/users?login=${userLogin}`);
   const userInfo = userInfoResponse.data.data[0];
-  console.log('userInfo: ');
-  console.log(userInfo);
   return userInfo;
 };
 
 const fetchLivestreamInfo = async (userLogin) => {
   const streamsResponse = await authInstance.get(`https://api.twitch.tv/helix/streams?user_login=${userLogin}`);
   const streams = streamsResponse.data.data[0];
-  console.log('streams: ');
-  console.log(streams);
   return streams;
 }
 

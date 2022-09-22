@@ -23,7 +23,7 @@ const Clips = () => {
   const modalContent = (id) => {
     return (
       <iframe
-        src={`https://clips.twitch.tv/embed?clip=${id}&parent=localhost`}
+        src={`https://clips.twitch.tv/embed?clip=${id}&parent=site-clone-6db61.firebaseapp.com`}
         height="360"
         width="640"
         allowFullScreen

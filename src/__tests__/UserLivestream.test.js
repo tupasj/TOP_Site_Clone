@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { UserLivestream } from "../components/Streams/UserLivestream";
+import { UserLivestream } from "../components/Livestreams/UserLivestream";
 
 test("video player renders", () => {
     render(<UserLivestream />);

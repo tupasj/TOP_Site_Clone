@@ -8,7 +8,7 @@ const UserLivestream = () => {
     <>
       <iframe
         data-testid="video-player"
-        src={`https://player.twitch.tv/?channel=${params.channelName}&parent=localhost`}
+        src={`https://player.twitch.tv/?channel=${params.channelName}&parent=site-clone-6db61.firebaseapp.com`}
         height="720"
         width="1280"
         allowFullScreen
@@ -16,7 +16,7 @@ const UserLivestream = () => {
       <iframe
         data-testid="chat-box"
         id="twitch-chat-embed"
-        src={`https://www.twitch.tv/embed/${params.channelName}/chat?parent=localhost`}
+        src={`https://www.twitch.tv/embed/${params.channelName}/chat?parent=site-clone-6db61.firebaseapp.com`}
         height="720"
         width="350"
       ></iframe>

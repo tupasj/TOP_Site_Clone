@@ -18,7 +18,7 @@ const FeaturedLivestream = () => {
       {topUserName && (
         <iframe
           data-testid="video-player"
-          src={`https://player.twitch.tv/?channel=${topUserName}&parent=localhost`}
+          src={`https://player.twitch.tv/?channel=${topUserName}&parent=site-clone-6db61.firebaseapp.com`}
           height="360"
           width="1280"
           allowFullScreen
