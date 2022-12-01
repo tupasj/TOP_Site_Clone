@@ -2,7 +2,7 @@ import axios from "axios";
 
 const authInstance = axios.create({
   headers: {
-    "Authorization": "Bearer veemgsu384i20g5yp8yjrb04198zlz",
+    "Authorization": "Bearer sklqdhupsd5ul8l8c5xifl9n9lr1m2",
     "Client-Id": "95n6aprvq0p87raezjptqic51b6944",
   },
 });
